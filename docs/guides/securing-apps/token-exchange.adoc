@@ -826,15 +826,14 @@ image::exchange-target-client-permission-setup.png[Target Client Exchange Permis
 
 . Click *Client details* in the breadcrumbs at the top of the screen.
 . Define a policy for this permission.
-. Click *Authorization* in the breadcrumbs at the top of the screen.
-. Define a policy for this permission.
+. Click the *Authorization* tab.
 . Click the *Policies* tab.
 . Create a *Client* Policy by clicking *Create policy* button.
 +
 .Client Policy Creation
 image::exchange-target-client-policy.png[Client Policy Creation]
 
-. Enter in the starting client that is the authenticated client that is requesting a token exchange.
+. Enter a *Name* for the policy, select the client that requests the token exchange in the *Clients* field, for example `starting-client`, and click *Save*.
 
 . After you create this policy, go back to the target client's *token-exchange* permission and add the client policy you just defined.
 +
@@ -935,7 +934,7 @@ image::exchange-idp-permission-setup.png[Identity Provider Exchange Permission S
 .Client Policy Creation
 image::exchange-idp-client-policy.png[Client Policy Creation]
 
-. Enter the starting client that is the authenticated client that is requesting a token exchange.
+. Enter a *Name* for the policy, select the client that requests the token exchange in the *Clients* field, for example `starting-client`, and click *Save*.
 
 . Return to the identity provider's *token-exchange* permission and add the client policy you just defined.
 +
@@ -1150,13 +1149,16 @@ image::exchange-users-permission-setup.png[Users Impersonation Permission Setup]
 .Client Policy Creation
 image::exchange-users-client-policy.png[Client Policy Creation]
 
-. Enter the starting client that is the authenticated client that is requesting a token exchange.
+. Enter a *Name* for the policy, select the client that requests the token exchange in the *Clients* field, for example `starting-client`, and click *Save*.
 
-. Return to the users' *impersonation* permission and add the client policy you just
-defined.
+. Return to the `admin-impersonating.permission.users` permission, which is the permission that the *impersonate* link opens, and add the client policy you just defined.
 +
-.Apply Client Policy
-image::exchange-users-apply-policy.png[Apply Client Policy]
+[NOTE]
+====
+Add the client policy to the `admin-impersonating.permission.users` permission, not to the `user-impersonated.permission.users` permission.
+Policies on the `user-impersonated.permission.users` permission are evaluated against the user being impersonated, not against the client, so they control which users can be impersonated.
+If that permission has no policies, the client can impersonate any user in the realm.
+====
 
 Your client now has permission to impersonate users.  If you do not do this correctly, you will get a 403 Forbidden response if you
 try to make this type of exchange.
