@@ -53,6 +53,23 @@ Provider configuration options are provided when starting the server. See all su
 .Setting the `connection-pool-size` for the `default` provider of the `connections-http-client` SPI
 <@kc.start parameters="--spi-connections-http-client--default--connection-pool-size=10"/>
 
+To set the same option as an environment variable, add the `KC_` prefix, use upper case, and replace each `-` with `+_+`.
+The `--` separators between the SPI, provider, and property names become `+__+`.
+
+.Setting the `connection-pool-size` for the `default` provider of the `connections-http-client` SPI with an environment variable
+[source,bash]
+----
+export KC_SPI_CONNECTIONS_HTTP_CLIENT__DEFAULT__CONNECTION_POOL_SIZE=10
+----
+
+=== Finding the SPI and provider names
+
+To see the names of the SPIs and providers available in your server, open the Admin Console, select *Realm info* from the user menu, and select the *Provider info* tab.
+Convert each name to the option format described above.
+For example, the SPI listed as `eventsListener` is `events-listener` in an option name and `+EVENTS_LISTENER+` in an environment variable name.
+
+Built-in providers that declare their configuration properties are listed with their option and environment variable names in <@links.server id="all-provider-config"/>.
+
 == Build time options
 
 === Configuring a single provider for an SPI
@@ -136,6 +153,7 @@ Once you do that, the server is going to make these additional dependencies avai
 == References
 
 * <@links.server id="configuration"/>
+* <@links.server id="all-provider-config"/>
 * https://www.keycloak.org/docs/latest/server_development/#_providers[Server Developer Documentation]
 
 </@tmpl.guide>
