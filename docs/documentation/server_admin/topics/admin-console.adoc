@@ -6,6 +6,7 @@ Once you have an administrative account for the Admin Console, you can configure
 
 include::realms/proc-using-admin-console.adoc[leveloffset=1]
 include::realms/master.adoc[leveloffset=2]
+include::realms/proc-clearing-caches.adoc[leveloffset=2]
 include::realms/proc-creating-a-realm.adoc[leveloffset=2]
 include::realms/ssl.adoc[leveloffset=2][]
 include::realms/email.adoc[leveloffset=2]

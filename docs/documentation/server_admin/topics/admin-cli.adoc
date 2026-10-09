@@ -532,6 +532,7 @@ $ kcadm delete events
 * `clear-realm-cache`
 * `clear-user-cache`
 * `clear-keys-cache`
+* `clear-crl-cache`
 
 . Set `realm` to the same value as the target realm.
 +
@@ -542,7 +543,10 @@ For example:
 $ kcadm.sh create clear-realm-cache -r demorealm -s realm=demorealm
 $ kcadm.sh create clear-user-cache -r demorealm -s realm=demorealm
 $ kcadm.sh create clear-keys-cache -r demorealm -s realm=demorealm
+$ kcadm.sh create clear-crl-cache -r demorealm -s realm=demorealm
 ----
+
+To clear the caches from the Admin Console and to learn when clearing them is useful, see xref:proc-clearing-caches_{context}[Clearing caches].
 
 [discrete]
 ==== Importing a realm from exported .json file

@@ -1,0 +1,37 @@
+[id=proc-clearing-caches_{context}]
+= Clearing caches
+
+[role="_abstract"]
+{project_name} keeps realms, users, public keys of external clients and identity providers, and certificate revocation lists (CRLs) in caches so that it does not have to load them on every request.
+Changes that you make through the Admin Console, the Admin REST API, or the Admin CLI update the caches automatically, so you do not need to clear the caches after such changes.
+
+Clear a cache when its entries no longer match the source data, for example after you change data directly in the database.
+Clearing a cache removes its entries for all realms on all nodes of the cluster.
+{project_name} then loads the entries again when they are next needed, so expect more load on the database and slower responses for a short time.
+
+.Prerequisites
+
+* You are logged in to the Admin Console in the _master_ realm with a user that has the `manage-realm` role.
+
+.Procedure
+
+. Click your username in the top right corner of the Admin Console.
+. Click *Clear Caches*.
+. Click *Clear* next to the cache that you want to clear.
++
+[cols="1,3"]
+|===
+|Cache |Content
+
+|*Realm Cache*
+|Realms, clients, client scopes, roles, and groups.
+
+|*User Cache*
+|Users.
+
+|*Keys Cache*
+|Public keys of external clients and identity providers.
+
+|*CRL Cache*
+|Certificate revocation lists that the X.509 authenticator uses.
+|===
