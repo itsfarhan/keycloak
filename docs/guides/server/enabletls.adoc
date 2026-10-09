@@ -73,6 +73,20 @@ However, as a temporary work-around, you can enable deprecated protocols by runn
 
 For example to only enable TLSv1.3, use a command such as the following: `kc.sh start --https-protocols=TLSv1.3`.
 
+== Configuring TLS cipher suites
+To limit the cipher suites that {project_name} accepts, run the following command:
+
+<@kc.start parameters="--https-cipher-suites=<cipher-suite>[,<cipher-suite>]"/>
+
+The value is a comma-separated list of cipher suite names in the format used by the Java Secure Socket Extension (JSSE), such as `+TLS_AES_256_GCM_SHA384+` or `+TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384+`.
+
+For example, to accept only these two cipher suites, use a command such as the following: `+kc.sh start --https-cipher-suites=TLS_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384+`.
+
+OpenSSL cipher strings, such as `ECDHE-RSA-AES256-GCM-SHA384` or exclusions such as `!aNULL`, are not supported.
+{project_name} starts with such a value, but every HTTPS connection then fails, and the server log shows an `Unsupported CipherSuite` error.
+
+The management interface uses the same cipher suites unless you set the `https-management-cipher-suites` option.
+
 == Switching the HTTPS port
 {project_name} listens for HTTPS traffic on port `8443`. To change this port, use the following command:
 <@kc.start parameters="--https-port=<port>"/>
